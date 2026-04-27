@@ -304,7 +304,7 @@ of Use </a>&nbsp; &nbsp; <a href="PrivacyPolicyR.html">Privacy Policy</a>
 
 
 
-<div class="tabbertab">
+<div class="tabbertab" style="padding: 15px;">
 <h2>Kotei Kato</h2>
 
 
@@ -339,6 +339,28 @@ of the images to play.<br><br><br>
   </a>
 </div>
 <br>
+
+
+
+<p id="explanation">
+In the provided implementation a special highlighting scheme is employed to avoid numbers' blocking one another and by
+that making the cube difficult to work with.
+The scheme is based on the following four principles:
+<br>
+<br>
+&spades; &nbsp; numbers that are not of the player's "immediate interest" are dimmed and semi-transparent allowing the player to focus on
+those that he is currently working with<br><br>
+&spades; &nbsp; only the numbers that reside in some slice <span style="color: brown">containing the elevator</span> are considered of the player's
+immediate interest and are fully highlighted<br><br>
+&spades; &nbsp; there are always three slices that contain the elevator, however only one of them is highlighted; it
+is that slice among the three that is most parallel to the plane of the screen<br><br>
+&spades; &nbsp; by rotating the cube and moving the elevator the player can highlight any slice he wishes
+
+</p>
+
+
+
+
 
 <div style="text-align: center;">
     &clubs;
