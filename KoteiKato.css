@@ -154,7 +154,7 @@ select {
 
 .independent-info {
  position: absolute;
-  top: 280px; /* Positioned for thumb reach on iPhone */
+  top: 320px; /* Positioned for thumb reach on iPhone */
   left: 45px;
   max-width: 100px
   font-size: 1.5rem;
