@@ -207,10 +207,13 @@ class LogicalCube {
 size = 4;
 const cube = new LogicalCube(size);
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+const camera = new THREE.PerspectiveCamera(44, window.innerWidth / window.innerHeight, 0.1, 1000);
 const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
+renderer.domElement.id = "three-canvas";
+
+let isInteractingWithUI = false;
 
 const cubeGroup = new THREE.Group();
 scene.add(cubeGroup);
@@ -465,7 +468,7 @@ function updateNumberVisibility() {
         else if (axis === 'y' && pos.ly === index) isBright = true;
         else if (axis === 'z' && pos.lz === index) isBright = true;
 
-        sprite.material.opacity = isBright ? 1.0 : 0.3;
+        sprite.material.opacity = isBright ? 1.0 : 0.4;
         // Optional: Make inactive numbers slightly smaller to clear the view
         const s = isBright ? 0.8 : 0.6;
         sprite.scale.set(s, s, s);
@@ -644,37 +647,54 @@ delBtn.addEventListener('click', () => {
        onNumButton(0)
 });
 
-
 const size_dropdown = document.getElementById('size-option');
 const game_dropdown = document.getElementById('game-option');
 
 size_dropdown.addEventListener('change', (event) => {
+      isInteractingWithUI = true;
       size = parseInt(event.target.value, 10);
       game_index = parseInt(game_dropdown.value, 10);
       const game = (size == 4) ? Games_4x4[game_index] : Games_5x5[game_index];
       offset = (size - 1) / 2; // Recalculate the center offset
       cube.loadContentFromArrays(game.mask, game.values);
-      rebuildGameScene()
+      rebuildGameScene();
+      document.getElementById('three-canvas').focus();
+      window.dispatchEvent(new PointerEvent('pointerdown'));
 })
 
 game_dropdown.addEventListener('change', (event) => {
+      isInteractingWithUI = true;
       game_index = parseInt(event.target.value, 10);
       size = parseInt(size_dropdown.value, 10);
       const game = (size == 4) ? Games_4x4[game_index] : Games_5x5[game_index];
       offset = (size - 1) / 2; // Recalculate the center offset
       cube.loadContentFromArrays(game.mask, game.values);
-      rebuildGameScene()
+      rebuildGameScene();
+      document.getElementById('three-canvas').focus();
+      window.dispatchEvent(new PointerEvent('pointerdown'));
 })
 
 const dropdowns = document.querySelectorAll('select');
 
 dropdowns.forEach(box => {
+/*
   box.addEventListener('mousedown', (event) => {
     // This stops the event from reaching your rotation code
     event.stopPropagation();
   });
+*/
+
+    box.addEventListener('pointerdown', (event) => {
+        isInteractingWithUI = true;
+       // event.stopPropagation();
+  });
+
+
+  box.addEventListener('blur', () => {
+    isInteractingWithUI = false;
 });
 
+});
 
 
 window.addEventListener('keydown', (e) =>
@@ -735,14 +755,54 @@ window.addEventListener('keydown', (e) =>
 });
 
 let isDragging = false;
-window.addEventListener('mousedown', () => isDragging = true);
-window.addEventListener('mouseup', () => isDragging = false);
-window.addEventListener('mousemove', (e) => {
+
+
+window.addEventListener('pointerdown', () => {
+
+// Check if we touched a button, a select (dropdown), or an input field
+    // console.log("Got pointer down event ...")
+    const isUI = event.target.closest('button, select, input, label');
+    if (isUI) {
+        // console.log("returning.")
+        // If it's UI, don't stop propagation here (let the dropdown work),
+        // but DO return so the 3D rotation doesn't start.
+        return;
+    }
+    // If it's NOT UI, lock the pointer and start the game rotation
+    // event.target.setPointerCapture(event.pointerId);
+// console.log("Setting dragging to true")
+isDragging = true
+});
+
+
+
+
+
+window.addEventListener('mousedown', () => {
+
+// Check if we touched a button, a select (dropdown), or an input field
+   // console.log("Got pointer down event ...")
+    const isUI = event.target.closest('button, select, input, label');
+    if (isUI) {
+       // console.log("returning.")
+        // If it's UI, don't stop propagation here (let the dropdown work),
+        // but DO return so the 3D rotation doesn't start.
+        return;
+    }
+    // If it's NOT UI, lock the pointer and start the game rotation
+    // event.target.setPointerCapture(event.pointerId);
+// console.log("Setting dragging to true")
+isDragging = true
+});
+
+window.addEventListener('pointerup', () => isDragging = false);
+window.addEventListener('pointermove', (e) => {
     if (isDragging) {
         cubeGroup.rotation.y += e.movementX * 0.005;
         cubeGroup.rotation.x += e.movementY * 0.005;
     }
 });
+
 
 camera.position.z = 10;
 updateElevator();

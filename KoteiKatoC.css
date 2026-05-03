@@ -1,33 +1,63 @@
-body { margin: 0;
+html, body { margin: 0;
       color: white;
       font-family:
       sans-serif;
+      overscroll-behavior: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
       overflow: hidden; /* Prevents the page from bouncing/scrolling on iPhone */
-background-color: #000; /* Matches the typical 3D background */
+      background-color: #000; /* Matches the typical 3D background */
+}
+
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* Crucial: stops the browser from intercepting game taps */
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.game-ui {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
 }
 
 .page-title {
 position: absolute; /* Takes it out of the flow */
-  top: -15px;          /* Distance from the very top */
+  top: -95px;          /* Distance from the very top */
   text-align: left;      /* Centers the text horizontally */
   margin-top: 110px;        /* Adds space from the top of the browser */
-  margin-left: 45px;
+  margin-left: 30px;
   margin-bottom: 20px;     /* Adds space before your dropdown grid starts */
   font-size: 2.5rem;       /* Makes it nice and large */
   color:  #BA55D3;             /* Use your preferred color */
   width: 100%;             /* Ensures it spans the full width to center correctly */
 }
 
-canvas { display: block; }
+p {
+  margin-top: 5px;    /* Space above the row */
+  margin-bottom: 4px; /* Space below the row */
+}
+
+canvas {
+display: block;
+touch-action: none;
+}
 .key { color: #BA55D3; font-weight: bold; }
 
 #controls {
     position: absolute;
-    top: 170px; /* Positioned for thumb reach on iPhone */
+    top: 20px; /* Positioned for thumb reach on iPhone */
     right: 40px;
     display: grid;
-    grid-template-columns: repeat(3, 60px); /* 3 columns, 60px each */
-    grid-template-rows: repeat(3, 60px);    /* 3 rows, 60px each */
+    grid-template-columns: repeat(3, 32px); /* 3 columns, 60px each */
+    grid-template-rows: repeat(3, 32px);    /* 3 rows, 60px each */
     gap: 15px;
     z-index: 100;
 }
@@ -45,21 +75,22 @@ canvas { display: block; }
   content: "▲";
   display: inline-block; /* Essential: transform doesn't work on 'inline' elements */
   transform: rotate(45deg);
-  margin-left: 8px;
+  margin-left: 3px;
+  margin-top: -6px
 }
 
 #out::after {
   content: "▲";
   display: inline-block; /* Essential: transform doesn't work on 'inline' elements */
   transform: rotate(225deg);
-  margin-left: -3px;
-  margin-top: 6px
+  margin-left: -4px;
+  margin-top: 0px
 }
 
 /* Styling to make them look like a D-pad */
 .grid-btn {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
     color: white;
     border: 2px solid white;
@@ -76,11 +107,11 @@ canvas { display: block; }
 /* number controls */
 #num-controls {
     position: absolute;
-    top: 480px; /* Positioned for thumb reach on iPhone */
-    right: 75px;
+    top: 193px; /* Positioned for thumb reach on iPhone */
+    right: 52px;
     display: grid;
-    grid-template-columns: repeat(2, 60px); /* 3 columns, 60px each */
-    grid-template-rows: repeat(2, 60px);    /* 3 rows, 60px each */
+    grid-template-columns: repeat(2, 35px); /* 3 columns, 60px each */
+    grid-template-rows: repeat(2, 35px);    /* 3 rows, 60px each */
     gap: 15px;
     z-index: 100;
 }
@@ -88,13 +119,13 @@ canvas { display: block; }
 
 /* Styling of the number controls */
 .grid-btn-n {
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
     color: #ffcc00;
     border: 2px solid white;
     border-radius: 10px;
-    font-size: 28px;
+    font-size: 24px;
     cursor: pointer;
     touch-action: manipulation; /* Prevents zooming on iPhone */
 }
@@ -111,21 +142,21 @@ canvas { display: block; }
 #del::after {
   content: "\1F480"; /* "\2620"; */ /* The Skull & Crossbones */
   font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
-  margin-left: 8px;
+  margin-left: 0px;
   color: red;       /* You can even change the color of this one! */
 }
 
 .grid-label {
   grid-column: 1 / -1; /* Stretch from the first to the last column */
-  margin-top: -5px;
+  margin-top: 0px;
   text-align: center; /* Optional: centers the label over the buttons */
   color: #BA55D3
 }
 
 .container {
   position: absolute;
-  top: 170px; /* Positioned for thumb reach on iPhone */
-  left: 45px;
+  top: 75px; /* Positioned for thumb reach on iPhone */
+  left: 30px;
 
   display: grid;
   /* Column 1: fits the longest label. Column 2: fills the rest */
@@ -139,13 +170,13 @@ canvas { display: block; }
 }
 
 label {
-  font-size: 1.8rem; /* or use pixels, e.g., 18px */
+  font-size: 1.3rem; /* or use pixels, e.g., 18px */
   font-weight: 600;  /* Optional: makes them slightly bolder */
   color: #ffcc00
 }
 
 select {
-  font-size: 1.8rem;
+  font-size: 1.3rem;
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -154,16 +185,20 @@ select {
 
 .independent-info {
  position: absolute;
-  top: 320px; /* Positioned for thumb reach on iPhone */
-  left: 45px;
+  top: 200px; /* Positioned for thumb reach on iPhone */
+  left: 30px;
   max-width: 100px
   font-size: 1.5rem;
   color: #ccc;
 }
 
 /* Responsive adjustment for mobile screens */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .input-grid {
     grid-template-columns: 1fr; /* Stack everything vertically on small screens */
+  }
+
+  .hide-on-mobile{
+   display: none; !important
   }
 }

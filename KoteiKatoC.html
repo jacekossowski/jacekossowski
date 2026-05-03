@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
     <title>KoteiKato - 3D Sudoku-Style Game</title>
-    <link rel="stylesheet" href="KoteiKato.css">
+    <link rel="stylesheet" href="KoteiKatoC.css">
 </head>
 <body>
 <header>
@@ -55,12 +56,25 @@
 </div>
 
 <!-- Truly independent text -->
-  <footer class="independent-info" style="width:260px; font-size:1rem">
-           <hr style="border: 0; border-top: 1px solid #555; margin: 15px 0;">
+  <footer class="independent-info" class="hide-on-mobile" style="width:260px; font-size:1rem">
+           <hr class="hide-on-mobile" style="border: 0; border-top: 1px solid #555; margin-bottom: 13px;">
+    <p class="hide-on-mobile"><span class="key" class="hide-on-mobile">Keyboard Shortcuts:</span></p>
+    <p class="hide-on-mobile"><span class="key hide-on-mobile">&#9664;  &#9654;</span> &nbsp; move the elevator left / right</p>
+     <p class="hide-on-mobile"> <span class="key hide-on-mobile">&#9650; &#9660;</span> &nbsp; move the elevator up / down</p>
+      <p class="hide-on-mobile"> <span class="key hide-on-mobile">Shift + &#9650;</span> &nbsp; move the elevator in</p>
+       <p class="hide-on-mobile"> <span class="key hide-on-mobile"> Shift + &#9660;</span> &nbsp; move the elevator out</p>
+            <p class="hide-on-mobile"><span class="key hide-on-mobile">&#9679;</span> &nbsp; to play enter 1 through 5
+                <p class="hide-on-mobile"> <span class="key hide-on-mobile">&#9679;</span> &nbsp; to erase your entry press 0</p>
+                            <hr class="hide-on-mobile" style="border: 0; border-top: 1px solid #555; margin-bottom: -3px; margin-top: 12px;">
+                 <p class="hide-on-mobile"> <span class="hide-on-mobile" style="font-size: 26px; color: #ffcc00;">&#9888;</span> &nbsp; invalid entries are ignored</p>
+ <p class="hide-on-mobile"> <span class="key hide-on-mobile">&#9679;</span> &nbsp; STAY TUNED FOR UPDATES!</p>
+
+  <!--
     <p><span class="key">TO START:</span> &nbsp; Click & hold to rotate</p>
     <p> <span class="key">&clubs;</span> &nbsp; Invalid entries are ignored</p>
      <p> <span class="key">&clubs;</span> &nbsp; Mobile version arriving soon!</p>
  <p> <span class="key">&clubs;</span> &nbsp; STAY TUNED FOR UPDATES</p>
+ -->
   </footer>
 
 </section>
@@ -68,6 +82,6 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
 
-<script src="KoteiKato.js"></script>
+<script src="KoteiKatoC.js"></script>
 </body>
 </html>
