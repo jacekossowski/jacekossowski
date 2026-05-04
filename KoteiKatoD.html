@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
+    <title>KoteiKato - 3D Sudoku-Style Game</title>
+    <link rel="stylesheet" href="KoteiKatoD.css">
+</head>
+<body>
+<header>
+  <h1 class="page-title">KoteiKato</h1>
+</header>
+
+ <div id="controls">
+    <button id="up" class="grid-btn">▲</button>
+    <button id="left" class="grid-btn">◀</button>
+    <button id="right" class="grid-btn">▶</button>
+    <button id="down" class="grid-btn">▼</button>
+    <button id="in" class="grid-btn" ></button>
+    <button id="out" class="grid-btn" ></button>
+     <p class="grid-label" style="grid-row: 4;">Move Elevator</p> <!-- Below -->
+</div>
+
+ <div id="num-controls">
+    <button id="one" class="grid-btn-n">1</button>
+    <button id="two" class="grid-btn-n">2</button>
+    <button id="three" class="grid-btn-n">3</button>
+    <button id="four" class="grid-btn-n">4</button>
+    <button id="five" class="grid-btn-n" >5</button>
+    <button id="del" class="grid-btn-n" ></button>
+    <p class="grid-label" style="grid-row: 4;">Set Cell Content</p> <!-- Below -->
+</div>
+
+<section class="settings-wrapper">
+
+<div class="container">
+  <!-- Row 1 -->
+  <label>Size:</label>
+  <select id = "size-option">
+      <option value = "4">4</option>
+       <option value = "5">5</option>
+
+  </select>
+
+  <!-- Row 2 -->
+  <label>Puzzle #:</label>
+  <select id = "game-option">
+      <option value = "0">1</option>
+      <option value = "1">2</option>
+      <option value = "2">3</option>
+      <option value = "3">4</option>
+      <option value = "4">5</option>
+  </select>
+
+</div>
+
+<!-- Truly independent text -->
+  <footer class="independent-info" class="hide-on-mobile" style="width:260px; font-size:1rem">
+           <hr class="hide-on-mobile" style="border: 0; border-top: 1px solid #555; margin-bottom: 13px;">
+    <p class="hide-on-mobile"><span class="key" class="hide-on-mobile">Keyboard Shortcuts:</span></p>
+    <p class="hide-on-mobile"><span class="key hide-on-mobile">&#9664;  &#9654;</span> &nbsp; move the elevator left / right</p>
+     <p class="hide-on-mobile"> <span class="key hide-on-mobile">&#9650; &#9660;</span> &nbsp; move the elevator up / down</p>
+      <p class="hide-on-mobile"> <span class="key hide-on-mobile">Shift + &#9650;</span> &nbsp; move the elevator in</p>
+       <p class="hide-on-mobile"> <span class="key hide-on-mobile"> Shift + &#9660;</span> &nbsp; move the elevator out</p>
+            <p class="hide-on-mobile"><span class="key hide-on-mobile">&#9679;</span> &nbsp; to play enter 1 through 5
+                <p class="hide-on-mobile"> <span class="key hide-on-mobile">&#9679;</span> &nbsp; to erase your entry press 0</p>
+                            <hr class="hide-on-mobile" style="border: 0; border-top: 1px solid #555; margin-bottom: -3px; margin-top: 12px;">
+                 <p class="hide-on-mobile"> <span class="hide-on-mobile" style="font-size: 26px; color: #ffcc00;">&#9888;</span> &nbsp; invalid entries are ignored</p>
+ <p class="hide-on-mobile"> <span class="key hide-on-mobile">&#9679;</span> &nbsp; STAY TUNED FOR UPDATES!</p>
+
+  <!--
+    <p><span class="key">TO START:</span> &nbsp; Click & hold to rotate</p>
+    <p> <span class="key">&clubs;</span> &nbsp; Invalid entries are ignored</p>
+     <p> <span class="key">&clubs;</span> &nbsp; Mobile version arriving soon!</p>
+ <p> <span class="key">&clubs;</span> &nbsp; STAY TUNED FOR UPDATES</p>
+ -->
+  </footer>
+
+</section>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.160.0/three.min.js"></script>
+
+<script src="KoteiKatoD.js"></script>
+</body>
+</html>

@@ -1,0 +1,289 @@
+html, body { margin: 0;
+      color: white;
+      font-family:
+      sans-serif;
+      overscroll-behavior: none;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      overflow: hidden; /* Prevents the page from bouncing/scrolling on iPhone */
+      background-color: #000; /* Matches the typical 3D background */
+}
+
+#threejs-container {
+    position: absolute;
+    top: -135px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1; /* Sit behind the buttons */
+}
+canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  touch-action: none; /* Crucial: stops the browser from intercepting game taps */
+}
+
+* {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  user-select: none;
+}
+
+.game-ui {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+#game-option{
+width: 80px;
+
+}
+#game-option{
+width: 80px;
+
+}
+
+
+.page-title {
+position: absolute; /* Takes it out of the flow */
+  top: -90px;          /* Distance from the very top */
+  text-align: left;      /* Centers the text horizontally */
+  margin-top: 110px;        /* Adds space from the top of the browser */
+  margin-left: 30px;
+  margin-bottom: 20px;     /* Adds space before your dropdown grid starts */
+  font-size: 3rem;       /* Makes it nice and large */
+  color:  #BA55D3;             /* Use your preferred color */
+  width: 100%;             /* Ensures it spans the full width to center correctly */
+  z-index:10;
+}
+
+p {
+  margin-top: 5px;    /* Space above the row */
+  margin-bottom: 4px; /* Space below the row */
+}
+
+canvas {
+display: block;
+touch-action: none;
+}
+.key { color: #BA55D3; font-weight: bold; }
+
+#controls {
+   /* position: absolute; */
+   /* top: 20px; *//* Positioned for thumb reach on iPhone */
+  /*  left: 350px; */
+    display: grid;
+    grid-template-columns: repeat(3, 50px); /* 3 columns, 60px each */
+    grid-template-rows: repeat(3, 50px);    /* 3 rows, 60px each */
+    gap: 24px;
+    z-index: 100;
+}
+
+/* Position the buttons in the cross shape */
+#up    { grid-column: 2; grid-row: 1; }
+#left  { grid-column: 1; grid-row: 2; }
+#right { grid-column: 3; grid-row: 2; }
+#down  { grid-column: 2; grid-row: 3; }
+#in    { grid-column: 3; grid-row:1; color: #ffcc00;}
+#out   { grid-column: 1; grid-row:3; color: #ffcc00;}
+
+
+#in::after {
+  content: "▲";
+  display: inline-block; /* Essential: transform doesn't work on 'inline' elements */
+  transform: rotate(45deg);
+  margin-left: 3px;
+  margin-top: -6px
+}
+
+#out::after {
+  content: "▲";
+  display: inline-block; /* Essential: transform doesn't work on 'inline' elements */
+  transform: rotate(225deg);
+  margin-left: -4px;
+  margin-top: 0px
+}
+
+#control-panel{
+  display: flex;
+  flex-direction: row;
+  justify-content: center; /* Centers horizontally */
+  align-items: flex-start; /* Keeps them at the top */
+  gap: 56px;               /* Space between the two grids */
+  padding-bottom: 22%;       /* Margin from the very top of the page */
+  width: 100%;
+}
+
+/* Styling to make them look like a D-pad */
+.grid-btn {
+    width: 64px;
+    height: 64px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
+    color: white;
+    border: 2px solid white;
+    border-radius: 12px;
+    font-size: 32px;
+    cursor: pointer;
+    touch-action: manipulation; /* Prevents zooming on iPhone */
+}
+
+.grid-btn:active {
+    background-color: rgba(255, 255, 255, 0.5); /* Visual feedback */
+}
+
+/* number controls */
+#num-controls {
+   /* position: absolute; */
+   /*  top: 20px;  *//* Positioned for thumb reach on iPhone */
+   /* left: 550px;*/
+    padding-top: 16px;
+    display: grid;
+    grid-template-columns: repeat(3, 40px); /* 3 columns, 60px each */
+    grid-template-rows: repeat(2, 40px);    /* 3 rows, 60px each */
+    gap: 64px;
+    z-index: 100;
+}
+
+/* Styling of the number controls */
+.grid-btn-n {
+    width: 86px;
+    height: 86px;
+    background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
+    color: #ffcc00;
+    border: 2px solid white;
+    border-radius: 12px;
+    font-size: 36px;
+    cursor: pointer;
+    touch-action: manipulation; /* Prevents zooming on iPhone */
+}
+
+/* Position the buttons in the cross shape */
+#one    { grid-column: 1; grid-row: 1; }
+#two   { grid-column: 2; grid-row: 1; }
+#three { grid-column: 3; grid-row: 1; }
+#four  { grid-column: 1; grid-row: 2; }
+#five   { grid-column: 2; grid-row:2;}
+#del   { grid-column: 3; grid-row:2;}
+
+
+#del::after {
+  content: "\1F480"; /* "\2620"; */ /* The Skull & Crossbones */
+  font-family: "Apple Color Emoji", "Segoe UI Emoji", sans-serif;
+  margin-left: 0px;
+  color: red;       /* You can even change the color of this one! */
+}
+
+.grid-label {
+  grid-column: 1 / -1; /* Stretch from the first to the last column */
+  margin-top: 0px;
+  text-align: center; /* Optional: centers the label over the buttons */
+  color: #BA55D3
+}
+
+.container {
+ /*  position: absolute; */
+ /*  top: 70px; */ /* Positioned for thumb reach on iPhone */
+ /*  left: 30px; */
+  padding-top: 35px;
+  display: grid;
+  /* Column 1: fits the longest label. Column 2: fills the rest */
+  grid-template-columns: max-content max-content;
+
+  /* Row-gap adds space between the rows */
+  row-gap: 20px;
+  /* Column-gap adds space between label and dropdown */
+  column-gap: 30px;
+  z-index:10;
+
+}
+
+label {
+  padding-top: 15px;
+  font-size: 1.6rem;
+  font-weight: 600;
+  color: #ffcc00
+  z-index: 10;
+}
+
+select {
+  font-size: 3rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.independent-info {
+ position: absolute;
+  top: 200px; /* Positioned for thumb reach on iPhone */
+  left: 30px;
+  max-width: 100px
+  font-size: 1.5rem;
+  color: #ccc;
+  z-index: 10;
+}
+
+/* 1. Hide the blocker by default (for Desktop) */
+#orientation-blocker {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: #1a1a1a;
+  color: white;
+  z-index: 9999;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+
+
+/* Responsive adjustment for mobile screens */
+@media (max-width: 1024px) {
+  .input-grid {
+    grid-template-columns: 1fr; /* Stack everything vertically on small screens */
+  }
+
+   .hide-on-mobile{
+   display: none; !important
+  }
+}
+
+#my_app{
+  display: flex;
+  flex-direction: column-reverse; /* This swaps the visual order */
+  height: 100vh; /* Optional: makes it fill the screen */
+}
+
+
+/* 2. Only show the blocker on mobile-sized screens in Portrait mode */
+@media screen and (max-width: 1024px) and (orientation: landscape) {
+  #orientation-blocker {
+    display: flex;
+  }
+
+  #my_app {
+    display: none; /* Hide the app so they can't interact with it */
+  }
+}
+
+/* 3. Simple rotation animation for the icon */
+.phone-icon {
+  width: 50px;
+  height: 80px;
+  border: 3px solid white;
+  border-radius: 5px;
+  margin: 0 auto 20px;
+  animation: rotate-device 2s infinite ease-in-out;
+}
+
+@keyframes rotate-device {
+  0% { transform: rotate(0deg); }
+  50% { transform: rotate(90deg); }
+  100% { transform: rotate(90deg); }
+}
