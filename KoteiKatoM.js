@@ -758,6 +758,9 @@ window.addEventListener('keydown', (e) =>
         }
         cube.setCell(elevLogPos.x, elevLogPos.y, elevLogPos.z, parseInt(e.key));
         refreshNumbers();
+    } else if (e.key == 'Delete' || e.key == 'Backspace'){
+        cube.setCell(elevLogPos.x, elevLogPos.y, elevLogPos.z, 0);
+        refreshNumbers();
     }
 
     if (elev_moved){
