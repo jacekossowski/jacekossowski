@@ -37,14 +37,9 @@ canvas {
 }
 
 #game-option{
-width: 80px;
+width: 90px;
 
 }
-#game-option{
-width: 80px;
-
-}
-
 
 .page-title {
 position: absolute; /* Takes it out of the flow */
@@ -53,7 +48,7 @@ position: absolute; /* Takes it out of the flow */
   margin-top: 110px;        /* Adds space from the top of the browser */
   margin-left: 30px;
   margin-bottom: 20px;     /* Adds space before your dropdown grid starts */
-  font-size: 3rem;       /* Makes it nice and large */
+  font-size: 3.5rem;       /* Makes it nice and large */
   color:  #BA55D3;             /* Use your preferred color */
   width: 100%;             /* Ensures it spans the full width to center correctly */
   z-index:10;
@@ -70,6 +65,9 @@ touch-action: none;
 }
 .key { color: #BA55D3; font-weight: bold; }
 
+
+/* These appear to be the elevator's directional
+   movement controls */
 #controls {
    /* position: absolute; */
    /* top: 20px; *//* Positioned for thumb reach on iPhone */
@@ -77,7 +75,7 @@ touch-action: none;
     display: grid;
     grid-template-columns: repeat(3, 50px); /* 3 columns, 60px each */
     grid-template-rows: repeat(3, 50px);    /* 3 rows, 60px each */
-    gap: 24px;
+    gap: 30px;
     z-index: 100;
 }
 
@@ -107,19 +105,20 @@ touch-action: none;
 }
 
 #control-panel{
+  margin-left: 100px;
   display: flex;
   flex-direction: row;
   justify-content: center; /* Centers horizontally */
   align-items: flex-start; /* Keeps them at the top */
-  gap: 56px;               /* Space between the two grids */
+  gap: 30px;               /* Space between the two grids */
   padding-bottom: 22%;       /* Margin from the very top of the page */
-  width: 100%;
+  width: 72%;
 }
 
 /* Styling to make them look like a D-pad */
 .grid-btn {
-    width: 64px;
-    height: 64px;
+    width: 70px;
+    height: 70px;
     background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent */
     color: white;
     border: 2px solid white;
@@ -138,6 +137,7 @@ touch-action: none;
    /* position: absolute; */
    /*  top: 20px;  *//* Positioned for thumb reach on iPhone */
    /* left: 550px;*/
+    padding-left: 22px;
     padding-top: 16px;
     display: grid;
     grid-template-columns: repeat(3, 40px); /* 3 columns, 60px each */
@@ -187,6 +187,9 @@ touch-action: none;
  /*  top: 70px; */ /* Positioned for thumb reach on iPhone */
  /*  left: 30px; */
   padding-top: 35px;
+  padding-bottom: 35px;
+  padding-left: 25px;
+  padding-right: 25px;
   display: grid;
   /* Column 1: fits the longest label. Column 2: fills the rest */
   grid-template-columns: max-content max-content;
@@ -196,6 +199,9 @@ touch-action: none;
   /* Column-gap adds space between label and dropdown */
   column-gap: 30px;
   z-index:10;
+  border: 2px solid #ffcc00;
+  border-radius: 15px;
+
 
 }
 
@@ -203,11 +209,21 @@ label {
   padding-top: 15px;
   font-size: 1.6rem;
   font-weight: 600;
-  color: #ffcc00
   z-index: 10;
 }
 
+#combo_box {
+    display: inline-block;
+    padding: 3px;
+    padding-bottom:5px;
+
+}
+
 select {
+  color: navy;
+  /* background: #ffcc00d0; */
+  text-align: center;
+  text-align-last: center;
   font-size: 3rem;
   border: 1px solid #ccc;
   border-radius: 8px;
@@ -215,15 +231,7 @@ select {
   cursor: pointer;
 }
 
-.independent-info {
- position: absolute;
-  top: 200px; /* Positioned for thumb reach on iPhone */
-  left: 30px;
-  max-width: 100px
-  font-size: 1.5rem;
-  color: #ccc;
-  z-index: 10;
-}
+
 
 /* 1. Hide the blocker by default (for Desktop) */
 #orientation-blocker {
