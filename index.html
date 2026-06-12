@@ -308,42 +308,55 @@ of Use </a>&nbsp; &nbsp; <a href="PrivacyPolicyR.html">Privacy Policy</a>
 <h2>KoteiKato &#9734; 3D Sudoku</h2>
 
 
+
 <br>
 <div style="text-align: center;">
-    <a href="KKRouter.html">&clubs;  Play Now On Your Laptop Or Mobile Device! &clubs;</a>
+      <img src="icons/icons8panda50.png" alt="Logo" style="height: 50px; vertical-align: middle; margin-right: -1px;">&nbsp;&nbsp;&nbsp;<a href="KKRouter.html">Play Now On  Your Laptop Or  Mobile Device!</a>&nbsp;&nbsp;&nbsp;<img src="icons/icons8tiger50.png" alt="Logo" style="height: 50px; vertical-align: middle; margin-right: -1px;">
 </div>
 
 
-<br>KoteiKato is a Sudoku-style game that is played in three dimensions. Technically, it is based on the concept of
- Latin cubes, 3-dimensional analogs of Latin squares studied by Euler. "Kotei Kato" are the first syllables of a Japanese
+<br>KoteiKato is a Sudoku-style game that is played in three dimensions. "Kotei Kato" are the first syllables of a Japanese
  expression "not bound by constraints" (in this case of two-dimensional space).<br><br>
 
-Initially, a cube of size N is given with a certain number of prefilled entries. One is to fill the remaining cells
+Initially, a cube of size N is given with a certain number of prefilled entries. The goal is to fill the remaining cells
 in such a way so that every row, every column, and every "near-far tunnel" contain distinct numbers 1 through N.<br><br>
-In the illustrations below N = 4. The second picture contains the solution to the puzzle given in the first. Click on any
-of the images to play.<br><br><br>
+
+To get a feel for the game <span style="color: brown">rotate</span> the simplified illustrations below where N = 4. The second picture contains the solution to the puzzle given in the first. The red "elevator" moves in three dimensions allowing one to set the content of the empty cells. See it in action by solving a <a href="KKRouter.html">puzzle.</a><br><br>
+
+Technically, the game is based on the concept of
+ Latin cubes, 3-dimensional analogs of Latin squares studied by Euler.<br><br><br>
 
 
 
-<div style="text-align: center;">
-    <a href="KKRouter.html">
-  <img src="KoteiKato0.png" style="width: 80%;">
-  </a>
+
+<div id="cube-container1" style="text-align: center;">
+<iframe style="border: 1px solid purple ; padding: 5px"
+  src="KoteiKatoPuz_InteractiveImage.html"
+  width="800"
+  height="800"
+  style="border: none; scrollbar-width: none;"
+  scrolling="no"
+  title="Interactive 3D Cube">
+</iframe><br>
+<span style="font-size: 35px !important;">&#8634;</span>
 </div>
 
-<div style="height: 20px"></div>
+<div style="height: 5px"></div>
 
-<div style="text-align: center;">
-     <a href="KKRouter.html">
-  <img src="KoteiKato.png" style="width: 80%">
-  </a>
+<div id="cube-container2" style="text-align: center;">
+<iframe style="border: 1px solid purple; padding: 5px"
+  src="KoteiKatoSol_InteractiveImage.html"
+  width="800"
+  height="800"
+  style="border: none; scrollbar-width: none;"
+  scrolling="no"
+  title="Interactive 3D Cube">
+</iframe>
 </div>
 <br>
 
-
-
 <p id="explanation">
-In the provided implementation a special highlighting scheme is employed to avoid numbers' blocking one another and by
+In the provided <a href="KKRouter.html">implementation</a> a special highlighting scheme is employed to avoid numbers' blocking one another and by
 that making the cube difficult to work with.
 The scheme is based on the following four principles:
 <br>
@@ -358,14 +371,14 @@ is that slice among the three that is most parallel to the plane of the screen<b
 
 </p>
 
-
-
-
-
 <div style="text-align: center;">
     &clubs;
 </div>
 <br>
+
+
+
+
 </div>
 
 
