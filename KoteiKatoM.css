@@ -12,16 +12,17 @@ html, body { margin: 0;
 
 #threejs-container {
     position: absolute;
-    top: -135px;
+    top: -80px;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 100dvh;
     z-index: 1; /* Sit behind the buttons */
 }
 canvas {
   display: block;
+  margin-top: 50px;
   width: 100%;
-  height: 100%;
+  height: 100dvh;
   touch-action: none; /* Crucial: stops the browser from intercepting game taps */
 }
 
@@ -43,10 +44,10 @@ width: 90px;
 
 .page-title {
 position: absolute; /* Takes it out of the flow */
-  top: -90px;          /* Distance from the very top */
+  top: -80px;          /* Distance from the very top */
   text-align: left;      /* Centers the text horizontally */
   margin-top: 110px;        /* Adds space from the top of the browser */
-  margin-left: 30px;
+  margin-left: 90px;
   margin-bottom: 20px;     /* Adds space before your dropdown grid starts */
   font-size: 3.5rem;       /* Makes it nice and large */
   color:  #BA55D3;             /* Use your preferred color */
@@ -105,14 +106,14 @@ touch-action: none;
 }
 
 #control-panel{
-  margin-left: 100px;
+  margin-left: -46px;
   display: flex;
   flex-direction: row;
   justify-content: center; /* Centers horizontally */
   align-items: flex-start; /* Keeps them at the top */
-  gap: 30px;               /* Space between the two grids */
+  gap: 50px;               /* Space between the two grids */
   padding-bottom: 22%;       /* Margin from the very top of the page */
-  width: 72%;
+  /* width: 74%;*/
 }
 
 /* Styling to make them look like a D-pad */
@@ -183,9 +184,11 @@ touch-action: none;
 }
 
 .container {
- /*  position: absolute; */
- /*  top: 70px; */ /* Positioned for thumb reach on iPhone */
- /*  left: 30px; */
+  position: absolute;
+  width: 375px;
+  max-width: 40%;
+  top: 40px;  /* Positioned for thumb reach on iPhone */
+  right: 90px;
   padding-top: 35px;
   padding-bottom: 35px;
   padding-left: 25px;
