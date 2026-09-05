@@ -254,8 +254,8 @@ Game.prototype.initialize = function(name,     // string
 	NORTH_WEST : "north_west"
     };
 
-    this.gWidth  = 620;  // 640
-    this.gHeight = 620;
+    this.gWidth  = 450;  // 640
+    this.gHeight = 450;
   
 }
 
@@ -1655,18 +1655,18 @@ var n = this.getSquareRef().dim;
 
 if (n == 6) {
 
-    this.gWidth = 620; //680;  // 720
-    this.gHeight = 620; //680; // 720
+    this.gWidth = 500; //680;  // 720
+    this.gHeight = 500; //680; // 720
 }
 
 if ( n==8) {
-    this.gWidth = 620; // 705;  // 720
-    this.gHeight = 620; // 705; // 720
+    this.gWidth = 500; // 705;  // 720
+    this.gHeight = 500; // 705; // 720
     }  
 
 if ( n==9) {
-    this.gWidth = 624; // 705;  //800
-    this.gHeight = 624; // 705; // 800
+    this.gWidth = 500; // 705;  //800
+    this.gHeight = 500; // 705; // 800
     }  
 
 var bCellWidth = this.gWidth/n;  // button cell width

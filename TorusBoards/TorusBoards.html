@@ -34,7 +34,7 @@
             <h1>Torus Boards</h1>
            <div id="difficulty_label">Difficulty:</div>
            <div id="combo_box">
-	     <select class="selectpicker" id="comboA" data-width="140px" data-size="3" onchange="var opt = this.value; var list=opt.split(' x '); window.location.href = './TorusBoards.html' + '?N='+list[0]+'&M='+list[1];">
+	     <select class="selectpicker" id="comboA" data-width="140px" data-size="7" onchange="var opt = this.value; var list=opt.split(' x '); window.location.href = './TorusBoards.html' + '?N='+list[0]+'&M='+list[1];">
 	        <option value="3 x 3" data-content="<img style='width: 25px; height: 25px;' src='./icons/icons8butterfly48.png'><span style='display: inline-block; width: 15px;'></span>3 x 3"></option>
 	        <option value="4 x 2" data-content="<img style='width: 25px; height: 25px;' src='./icons/icons8duck48black.png'><span style='display: inline-block; width: 15px;'></span>4 x 2"></option>
 	        <option value="6 x 2" data-content="<img style='width: 25px; height: 25px;' src='./icons/icons8panda50.png'><span style='display: inline-block; width: 15px;'></span>6 x 2"></option>
@@ -113,8 +113,7 @@
 	
 	<tr>
 	  <td class="tabdown">
-      <!--  &#9752 &nbsp; <a href="http://www.sudokustories.com">&nbsp;iPhone</a><br> -->
-        &#9752; &nbsp; <a class="link_type_1" href="https://play.google.com/store/apps/details?id=com.oscarseurat.torusgames">Android</a> <span style=" font-size: 20px; color: hotpink">(free)</span><br>
+          &#9752; &nbsp; <a class="link_type_1" href="https://play.google.com/store/apps/details?id=com.oscarseurat.torusgames">Android</a> <span style=" font-size: 20px; color: hotpink">(free)</span><br>
         &#9752; &nbsp; <a class="link_type_1" href="./Download.html">Desktop</a> <span style="color: hotpink; font-size:20px;">(free)</span><br>
 	  </td>
 	</tr>
@@ -125,12 +124,13 @@
    </div>
 
 
-
+    <div id="table-wrapper">
     <table id="goal_table" cellpadding=0>
       <tr>	  <td class="thead">Your Goal</td> </tr>
 
-      <tr> <td align="center" style="padding: 0px; margin=0px"> <img id="goal" src="./Goal_0x0.jpg"></img> </td> </tr>
+      <tr> <td><img id="goal" src="./Goal_0x0.jpg"></img> </td> </tr>
     </table>
+    </div>
 
 
     <!-- The script to figure which goal image to display -->
